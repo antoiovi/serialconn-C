@@ -42,8 +42,11 @@ CFLAGS += $(INCLUDES) -O -Wall -std=gnu99
 
 
 runmyserail: runmyserial.o arduino-serial-lib.o serialconn.o
-		$(CC) $(CFLAGS) -o bin/runmyserial$(EXE_SUFFIX) runmyserial.o arduino-serial-lib.o  serialconn.o -lpthread  $(LIBS)
+		$(CC) $(CFLAGS) -o bin/runmyserial$(EXE_SUFFIX) runmyserial.o arduino-serial-lib.o  serialconn.o   $(LIBS)
 
+# Added -lphtread to use pthread library
+runbythread: runbythread.o arduino-serial-lib.o serialconn.o
+		$(CC) $(CFLAGS) -o bin/runbythread$(EXE_SUFFIX) runbythread.o arduino-serial-lib.o  serialconn.o -lpthread  $(LIBS)
 
 
 .c.o:
